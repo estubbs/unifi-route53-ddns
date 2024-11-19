@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket = "estubbs-terraformstate"
     region = "us-east-1"
-    key    = "k8scluster"
+    key    = "unifi-route53-ddns"
   }
   required_providers {
     aws = {
