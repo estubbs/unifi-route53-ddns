@@ -1,0 +1,16 @@
+{
+  "name": "unifi-route53-ddns",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@aws-sdk/client-route-53": "^3.693.0"
+  },
+  "type": "module"
+}
