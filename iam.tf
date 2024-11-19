@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "lambda_policy_document" {
       "route53:ChangeResourceRecordSets"
     ]
 
-    resources = ["arn:aws:route53:::hostedzone/Z07556223KP7NV45NV0AV"]
+    resources = ["arn:aws:route53:::hostedzone/${var.hostedZoneId}"]
   }
   statement {
     effect = "Allow"
