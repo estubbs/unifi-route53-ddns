@@ -27,7 +27,7 @@ export const handler = async (event, context) => {
     var hostnameToChange = event.queryStringParameters.host;
     const authHeader = event.headers.authorization;
 
-    context.log("Attempting to update " + hostnameToChange + " to " + ipToChangeTo);
+    console.log("Attempting to update " + hostnameToChange + " to " + ipToChangeTo);
 
     if (!CheckAuth(authHeader)) {
         const response = {
@@ -78,7 +78,7 @@ export const handler = async (event, context) => {
     const changeResponse = await r53Client.send(changeCommand);
     const statusCode = changeResponse.$metadata.httpStatusCode;
     if(statusCode == 200){
-        context.log("Succesfully updated");
+        console.log("Succesfully updated");
     }
     return {
         statusCode: statusCode,

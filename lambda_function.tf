@@ -24,3 +24,12 @@ resource "aws_lambda_function" "unifi_route53_ddns" {
     }
   }
 }
+
+resource "aws_lambda_function_url" "lambda_url" {
+  authorization_type = "NONE"
+  function_name = aws_lambda_function.unifi_route53_ddns.function_name
+}
+
+output "aws_lambda_function_url" {
+  value = aws_lambda_function_url.lambda_url
+}
