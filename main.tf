@@ -9,11 +9,15 @@ terraform {
       source  = "hashicorp/aws"
       version = "5.76.0"
     }
+    archive = {
+      source  = "hashicorp/archive"
+      version = "2.6.0"
+    }
   }
 }
 
 provider "aws" {
-  region = "us-east-1"
+  region = var.region
 
   default_tags {
     tags = var.common_tags
