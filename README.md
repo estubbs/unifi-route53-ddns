@@ -160,6 +160,10 @@ The important part is to *REMOVE* the `https://` from the front of the url, and 
 11. Wait for your UniFi gateway to provision and apply these changes.
 12. Test that changes to your public IP address are reflected in Route53. Depending your ISP, you may need to wait for them to change your IP address. In some situations you can force a change by rebooting your Gateway, or unplugging the network cable from it, or power cycling your modem, or your ONT.
 
+If you want to force an update, without waiting for your public IP to change. You can manually trigger the lambda by calling the url and replacing the `%i` and the `%h` part of the query string.  For example, if you want to update the dns record `foo.example.com` to point at IP address `127.0.0.1` you could use the following command.
+
+`curl -u yourUser:yourPass "https://xxxxxxxxxxxxxxx.lambda-url.us-east-1.on.aws/?host=foo.example.com&ip=127.0.0.1"` You should then be able to see your changes reflected in Route53.
+
 ### Deploying with the AWS console (not recommended)
 
 I do not recommend this approach, because I think everyone should be using IaC tooling for managing AWS infrastructure, even for small projects. However this is a trivially simple AWS project and I can understand not everyone will want to setup, learn, and configure terraform.
@@ -231,6 +235,11 @@ You can also look at the inadyn configuration file located at `/run/ddns-<someth
 You can also trigger inadyn manually and observe its behavior in the foreground by running the following command: `/usr/sbin/inadyn -n -s -C -f /run/ddns-<something>-inadyn.conf -1 -l debug --foreground`
 
 Make sure to replace the `<something>` part in the above 2 commands as appropriate to the name of your inadyn.conf file which will vary depending on your specific internet connection.
+
+If you want to force an update, without waiting for your public IP to change. You can manually trigger the lambda by calling the url and replacing the `%i` and the `%h` part of the query string.  For example, if you want to update the dns record `foo.example.com` to point at IP address `127.0.0.1` you could use the following command.
+
+`curl -u yourUser:yourPass "https://xxxxxxxxxxxxxxx.lambda-url.us-east-1.on.aws/?host=foo.example.com&ip=127.0.0.1"` You should then be able to see your changes reflected in Route53.  Make sure you are using the url you obtained in the deployment step 6.
+
 
 ## Contributing and future development
 
