@@ -1,9 +1,11 @@
 terraform {
+
   backend "s3" {
     bucket = "estubbs-terraformstate"
     region = "us-east-1"
     key    = "unifi-route53-ddns"
   }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
